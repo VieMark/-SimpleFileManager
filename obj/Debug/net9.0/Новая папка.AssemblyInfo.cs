@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Новая папка")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0761d45e05f924944759db751ede918f4186c471")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a659a6cd9ca38cd1b691783d1c89b67bedea6443")]
 [assembly: System.Reflection.AssemblyProductAttribute("Новая папка")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Новая папка")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
