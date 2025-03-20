@@ -139,8 +139,55 @@ class FileManager
         else{
             Console.WriteLine("Несуществующий выбор.");
         }
+    }
 
-        
+    // Функция для удаления сразу всех файлов из папки
+    public void DeletFolder(){
+        Console.WriteLine("Вы уверены, что хотите удалить файлы (+ -)");
+        string i = Console.ReadLine();
+        if (i == "+"){
+            Console.WriteLine("Файлы находиться в уже заданном пути ? (+ -) :");
+            string bl = Console.ReadLine();
+            if (bl == "+"){
+                string[] picList = Directory.GetFiles(Path, "*.jpg");
+                string[] txtList = Directory.GetFiles(Path, "*.txt");
+                string[] pdfList = Directory.GetFiles(Path, "*.pdf");
+                foreach (string f in txtList){
+                    File.Delete(f);
+                }
+                foreach (string f in picList){
+                    File.Delete(f);
+                }
+                 foreach (string f in pdfList){
+                    File.Delete(f);
+                }
+                Console.WriteLine("Файлы удалёны.");
+            }
+            else if (bl == "-"){
+                Console.WriteLine("Прошу задайте путь до нужной папки с файлами ( C:/example ) :");
+                string PathFolder = Console.ReadLine();
+                string[] picList = Directory.GetFiles(PathFolder, "*.jpg");
+                string[] txtList = Directory.GetFiles(PathFolder, "*.txt");
+                string[] pdfList = Directory.GetFiles(PathFolder, "*.pdf");
+
+                foreach (string f in txtList){
+                    File.Delete(f);
+                }
+                foreach (string f in picList){
+                    File.Delete(f);
+                }
+                 foreach (string f in pdfList){
+                    File.Delete(f);
+                }
+                Console.WriteLine("Файлы удалёны.");
+            }
+        }
+        else if(i == "-"){
+            Console.WriteLine("Вы отменили удаление.");
+        }
+        else{
+            Console.WriteLine("Несуществующий выбор.");
+        }
     }
 }
 
@@ -167,6 +214,8 @@ class Program
                 Console.WriteLine("(4) - Узнать информацию о файле");
                 Console.WriteLine("(5) - Перенести файл");
                 Console.WriteLine("(6) - Копирование файла");
+                Console.WriteLine("(7) - Удалить файл");
+                Console.WriteLine("(8) - Удалить все файлы из папки");
                 Console.WriteLine("Ваш выбор - ");
 
                 string UserSelection = Console.ReadLine();
