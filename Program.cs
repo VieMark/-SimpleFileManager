@@ -66,7 +66,7 @@ class FileManager
         Console.WriteLine("Файл находиться в уже заданном пути ? (+ -) :");
         string bl = Console.ReadLine();
         if (bl == "+"){
-            Console.WriteLine("Введите как называtncz файл ( /file.txt ) :");
+            Console.WriteLine("Введите как называется файл ( /file.txt ) :");
             string FileName = Console.ReadLine();
             FileInfo fileInfo = new FileInfo(Path+FileName);
             if (fileInfo.Exists){
@@ -92,6 +92,56 @@ class FileManager
         
         }
     }
+
+    // Функция для переноса файла из одной папки в другую
+    public void Transfer(){
+        Console.WriteLine("Вы хотите выбрать файл для переноса из уже заданного пути ? (- +)");
+        string bl = Console.ReadLine();
+        if (bl == "+"){
+            Console.WriteLine("Введите как называется файл ( /file.txt ) :");
+            string FileName = Console.ReadLine();
+            string F1 = Path + FileName ;
+            Console.WriteLine("Введите путь до папки в которую вы хотите перенести файл ( C:/folder ) :");
+            string F2 = Console.ReadLine() + FileName ;
+        }
+    }
+
+    // Функция для удаления файлов
+    public void DeleteFile(){
+        Console.WriteLine("Вы уверены, что хотите удалить файл (+ -)");
+        string i = Console.ReadLine();
+        if (i == "+"){
+            Console.WriteLine("Файл находиться в уже заданном пути ? (+ -) :");
+            string bl = Console.ReadLine();
+            if (bl == "+"){
+                Console.WriteLine("Введите как называется файл ( /file.txt ) :");
+                string FileName = Console.ReadLine();
+                FileInfo fileD = new FileInfo(Path + FileName);
+                if (fileD.Exists) {
+                    fileD.Delete();
+                    Console.WriteLine("Файл успешно удалён.");
+                }
+            }
+            else if (bl == "-"){
+                Console.WriteLine("Прошу задайте путь до нужного файла ( C:/example/file.txt ) :");
+                string PathFile = Console.ReadLine();
+                FileInfo fileD = new FileInfo(PathFile);
+                if (fileD.Exists) {
+                    fileD.Delete();
+                    Console.WriteLine("Файл успешно удалён.");
+                }
+
+            }
+        }
+        else if(i == "-"){
+            Console.WriteLine("Вы отменили удаление.");
+        }
+        else{
+            Console.WriteLine("Несуществующий выбор.");
+        }
+
+        
+    }
 }
 
 class Program
@@ -110,12 +160,13 @@ class Program
                 }
 
                 Console.WriteLine("Что вы хотите сделать ?");
-                Console.WriteLine("(cd) - изменить путь");
+                Console.WriteLine("(cd) - Изменить путь");
                 Console.WriteLine("(1) - Создать папку");
                 Console.WriteLine("(2) - Создать файл");
                 Console.WriteLine("(3) - Просмотреть содержимое папки");
                 Console.WriteLine("(4) - Узнать информацию о файле");
                 Console.WriteLine("(5) - Перенести файл");
+                Console.WriteLine("(6) - Копирование файла");
                 Console.WriteLine("Ваш выбор - ");
 
                 string UserSelection = Console.ReadLine();
