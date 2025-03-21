@@ -16,7 +16,7 @@ class FileManager
     // Функция для создания новых папок или каталогов
     public void CreatingFolder(){
         try{
-        Console.WriteLine("Рабочая область остаётся прежней ? (+ -)");
+        Console.WriteLine("Рабочая область остаётся прежней ? (+ -) :");
         string bl = Console.ReadLine();
         if (bl == "+"){
             Console.WriteLine("Введите как будет называться папка  ( /folder ) :");
@@ -45,7 +45,7 @@ class FileManager
     // Функция для создания новых файлов
     public void CreatingFile(){
         try{
-        Console.WriteLine("Заданный путь остаётся прежним ? (+ -)");
+        Console.WriteLine("Заданный путь остаётся прежним ? (+ -) :");
         string bl = Console.ReadLine();
         if (bl == "+"){
             Console.WriteLine("Введите как будет называться файл ( /file.txt ) :");
@@ -71,6 +71,7 @@ class FileManager
 
     // Функция для просмотра содержимого папки
     public void FolderContents(){
+        Console.WriteLine("___ ___ ___ ___ ___");
         Console.WriteLine("Файлы : ");
         string[] Files = Directory.GetFiles(Path);
         foreach (string File in Files){
@@ -81,6 +82,7 @@ class FileManager
         foreach (string dir in Folders){
             Console.WriteLine(dir);
         }
+        Console.WriteLine("___ ___ ___ ___ ___");
     }
 
     // Функция для вывода информации о файле 
@@ -93,11 +95,13 @@ class FileManager
             string FileName = Console.ReadLine();
             FileInfo fileInfo = new FileInfo(Path+FileName);
             if (fileInfo.Exists){
+                Console.WriteLine("___ ___ ___ ___ ___");
                 Console.WriteLine($"Имя файла: {fileInfo.Name}");
                 Console.WriteLine($"Время создания: {fileInfo.CreationTime}");
                 Console.WriteLine($"Размер: {fileInfo.Length}");
                 DateTime FileLastDate = File.GetLastAccessTime(Path+FileName);
                 Console.WriteLine("Изменен: " + FileLastDate);
+                Console.WriteLine("___ ___ ___ ___ ___");
             }
         }
         else if (bl == "-"){
@@ -106,18 +110,20 @@ class FileManager
 
             FileInfo fileInfo = new FileInfo(PathFile);
             if (fileInfo.Exists){
+                Console.WriteLine("___ ___ ___ ___ ___");
                 Console.WriteLine($"Имя файла: {fileInfo.Name}");
                 Console.WriteLine($"Время создания: {fileInfo.CreationTime}");
                 Console.WriteLine($"Размер: {fileInfo.Length}");
                 DateTime FileLastDate = File.GetLastAccessTime(PathFile);
                 Console.WriteLine("Изменен: " + FileLastDate);
+                Console.WriteLine("___ ___ ___ ___ ___");
             }
         
         }
         }
         catch (Exception ex){
             Console.WriteLine(ex.Message);
-            Console.WriteLine("Возникла Ошибка!!!");
+            Console.WriteLine("ВОЗНИКЛА ОШИБКА !");
         }
     }
 
@@ -267,19 +273,19 @@ class FileManager
     // Функция для удаления сразу всех файлов из папки
     public void DeletFolder(){
         try{
-        Console.WriteLine("Вы хотите удалить файлы вместе с каталогом ? (+ -)");
+        Console.WriteLine("Вы хотите удалить файлы вместе с каталогом ? (+ -) :");
         string j = Console.ReadLine();
         Console.WriteLine("Файлы находиться в уже заданном пути ? (+ -) :");
         string bl = Console.ReadLine();
         if (bl == "+"){
             if (j == "+"){
-                Console.WriteLine($"Вы уверены что хотите удалить файлы ? (+ -)");
+                Console.WriteLine($"Вы уверены что хотите удалить файлы ? (+ -) :");
                 string check = Console.ReadLine();
                 if (check == "+"){Directory.Delete(Path, true);}
                 else if(check == "-"){Console.WriteLine("Вы отменили удаление.");}
             }
             else if (j == "-"){
-                Console.WriteLine($"Вы уверены что хотите удалить файлы ? (+ -)");
+                Console.WriteLine($"Вы уверены что хотите удалить файлы ? (+ -) :");
                 string check = Console.ReadLine();
                 if (check == "+"){
                     string[] picList = Directory.GetFiles(Path, "*.jpg");
@@ -360,9 +366,9 @@ class Program
                     Console.WriteLine("Прошу задайте путь до рабочей области(каталога) ( C:/folder/ ) :");
                     manager.Path = Console.ReadLine();
                 }
-                Console.WriteLine("___ ___ ___ ___ ___");
+                Console.WriteLine("___ ___ ___ ___ ___ ___ ___ ___ ___ ___");
                 Console.WriteLine("        Что вы хотите сделать ?");
-                Console.WriteLine("___ ___ ___ ___ ___");
+                Console.WriteLine("___ ___ ___ ___ ___ ___ ___ ___ ___ ___");
                 Console.WriteLine("    (cd) - Изменить путь");
                 Console.WriteLine("    (1) - Создать каталог");
                 Console.WriteLine("    (2) - Создать файл");
@@ -375,7 +381,7 @@ class Program
                 Console.WriteLine("    (9) - Удалить все файлы из каталога");
                 Console.WriteLine("    (exit) - Завершить программу");
                 
-                Console.WriteLine("Ваш выбор - ");
+                Console.Write("Ваш выбор : ");
 
                 string UserSelection = Console.ReadLine();
 
