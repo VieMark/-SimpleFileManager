@@ -50,7 +50,7 @@ class FileManager
         if (bl == "+"){
             Console.WriteLine("Введите как будет называться файл ( /file.txt ) :");
             string FileName = Console.ReadLine();
-            Directory.CreateDirectory(Path + FileName);
+            File.Create(Path + FileName);
             Console.WriteLine("Файл был успешно создан.");
         }
         else if (bl == "-"){
@@ -58,7 +58,7 @@ class FileManager
             Path = Console.ReadLine();
             Console.WriteLine("Введите как будет называться файл ( /file.txt ) :");
             string FolderName = Console.ReadLine();
-            Directory.CreateDirectory(Path + FolderName);
+            File.Create(Path + FolderName);
             Console.WriteLine("Файл был успешно создан.");
         }
         }
@@ -124,6 +124,7 @@ class FileManager
     // Функция для вывода инфы про папку
     public void InfoFd(){
         try{
+            Console.WriteLine("___ ___ ___ ___ ___");
             DirectoryInfo FolderInfo = new DirectoryInfo(Path);
             Console.WriteLine($"Название каталога: { FolderInfo.Name}");
             Console.WriteLine($"Время создания каталога: { FolderInfo.CreationTime}");
@@ -134,6 +135,8 @@ class FileManager
                 sum=sum+fi.Length;
             }
             Console.WriteLine($"Размер: {sum}");
+            Console.WriteLine("___ ___ ___ ___ ___");
+
         }
         catch{
             Console.WriteLine("Возникла ошибка !");
@@ -172,10 +175,10 @@ class FileManager
             }
         }
         else if(choice=="2"){
-            Console.WriteLine("Введите путь в котором находится нужный файл ( C:/folder/file.txt ) :");
+            Console.WriteLine("Введите путь в котором находится нужный файл ( C:/folder/file ) :");
             string Path_old  = Console.ReadLine();
             FileInfo file = new FileInfo(Path_old);
-            Console.WriteLine("Введите путь в который будет помещён новый файл ( C:/folder/file.txt ) :");
+            Console.WriteLine("Введите путь в который будет помещён новый файл ( C:/folder/file ) :");
             string Path_new = Console.ReadLine();
             Console.WriteLine("Если файл с таким названием уже соществует перезаписать его ? (+ -)");
             string rewrite = Console.ReadLine();
@@ -282,6 +285,7 @@ class FileManager
                     string[] picList = Directory.GetFiles(Path, "*.jpg");
                     string[] txtList = Directory.GetFiles(Path, "*.txt");
                     string[] pdfList = Directory.GetFiles(Path, "*.pdf");
+                    string[] docxList = Directory.GetFiles(Path, "*.docx");
                     foreach (string f in txtList){
                         File.Delete(f);
                     }
@@ -289,6 +293,9 @@ class FileManager
                         File.Delete(f);
                     }
                     foreach (string f in pdfList){
+                        File.Delete(f);
+                    }
+                    foreach (string f in docxList){
                         File.Delete(f);
                     }
                     Console.WriteLine("Файлы удалёны.");
@@ -312,6 +319,7 @@ class FileManager
                     string[] picList = Directory.GetFiles(PathFolder, "*.jpg");
                     string[] txtList = Directory.GetFiles(PathFolder, "*.txt");
                     string[] pdfList = Directory.GetFiles(PathFolder, "*.pdf");
+                    string[] docxList = Directory.GetFiles(PathFolder, "*.docx");
 
                     foreach (string f in txtList){
                         File.Delete(f);
@@ -320,6 +328,9 @@ class FileManager
                         File.Delete(f);
                     }
                     foreach (string f in pdfList){
+                        File.Delete(f);
+                    }
+                    foreach (string f in docxList){
                         File.Delete(f);
                     }
                     Console.WriteLine("Файлы удалёны.");
@@ -349,19 +360,21 @@ class Program
                     Console.WriteLine("Прошу задайте путь до рабочей области(каталога) ( C:/folder/ ) :");
                     manager.Path = Console.ReadLine();
                 }
-
-                Console.WriteLine("Что вы хотите сделать ?");
-                Console.WriteLine("(cd) - Изменить путь");
-                Console.WriteLine("(1) - Создать каталог");
-                Console.WriteLine("(2) - Создать файл");
-                Console.WriteLine("(3) - Просмотреть содержимое каталога");
-                Console.WriteLine("(4) - Узнать информацию о файле");
-                Console.WriteLine("(5) - Узнать информацию о каталоге");
-                Console.WriteLine("(6) - Копирование файла");
-                Console.WriteLine("(7) - Перенос каталога");
-                Console.WriteLine("(8) - Удалить файл");
-                Console.WriteLine("(9) - Удалить все файлы из каталога");
-                Console.WriteLine("(exit) - Завершить программу");
+                Console.WriteLine("___ ___ ___ ___ ___");
+                Console.WriteLine("        Что вы хотите сделать ?");
+                Console.WriteLine("___ ___ ___ ___ ___");
+                Console.WriteLine("    (cd) - Изменить путь");
+                Console.WriteLine("    (1) - Создать каталог");
+                Console.WriteLine("    (2) - Создать файл");
+                Console.WriteLine("    (3) - Просмотреть содержимое каталога");
+                Console.WriteLine("    (4) - Узнать информацию о файле");
+                Console.WriteLine("    (5) - Узнать информацию о каталоге");
+                Console.WriteLine("    (6) - Копирование файла");
+                Console.WriteLine("    (7) - Перенос каталога");
+                Console.WriteLine("    (8) - Удалить файл");
+                Console.WriteLine("    (9) - Удалить все файлы из каталога");
+                Console.WriteLine("    (exit) - Завершить программу");
+                
                 Console.WriteLine("Ваш выбор - ");
 
                 string UserSelection = Console.ReadLine();
